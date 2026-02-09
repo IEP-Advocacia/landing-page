@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campelo Advogados | Escritório de Advocacia em Fortaleza - Excelência Jurídica</title>
+    <meta name="description" content="Campelo Advogados em Fortaleza, CE. Mais de 15 anos de experiência em Direito Civil, Empresarial, Trabalhista e Tributário. Atendimento humanizado e soluções jurídicas personalizadas. Contato: (85) 98854-2604." />
+    <meta name="keywords" content="advogado Fortaleza, escritório advocacia Fortaleza, direito civil, direito empresarial, direito trabalhista, direito tributário, Campelo Advogados, Cláudio Pacheco Campelo, OAB CE" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Campelo Advogados" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href="https://www.iepadvocacia.com.br/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.iepadvocacia.com.br/" />
+    <meta property="og:title" content="Campelo Advogados | Excelência e Compromisso com a Justiça" />
+    <meta property="og:description" content="Escritório de advocacia em Fortaleza com mais de 15 anos de experiência. Direito Civil, Empresarial, Trabalhista, Tributário e mais. Atendimento humanizado." />
+    <meta property="og:image" content="https://www.iepadvocacia.com.br/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Campelo Advogados" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.iepadvocacia.com.br/" />
+    <meta name="twitter:title" content="Campelo Advogados | Excelência e Compromisso com a Justiça" />
+    <meta name="twitter:description" content="Escritório de advocacia em Fortaleza. Direito Civil, Empresarial, Trabalhista, Tributário. Mais de 15 anos de experiência." />
+    <meta name="twitter:image" content="https://www.iepadvocacia.com.br/og-image.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LegalService",
+          "@id": "https://www.iepadvocacia.com.br/#organization",
+          "name": "Campelo Advogados",
+          "description": "Escritório de advocacia que combina tradição e modernidade na prestação de serviços jurídicos de alta qualidade em Fortaleza, CE.",
+          "url": "https://www.iepadvocacia.com.br",
+          "logo": "https://www.iepadvocacia.com.br/logo.png",
+          "image": "https://www.iepadvocacia.com.br/og-image.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Fortaleza",
+            "addressRegion": "CE",
+            "addressCountry": "BR"
+          },
+          "telephone": "+55-85-98854-2604",
+          "email": "contato@iepadvocacia.com.br",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          "priceRange": "$$",
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": { "@type": "GeoCoordinates", "latitude": -3.7172, "longitude": -38.5433 },
+            "geoRadius": "50000"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.iepadvocacia.com.br/#founder",
+          "name": "Cláudio Pacheco Campelo",
+          "jobTitle": "Advogado",
+          "worksFor": { "@id": "https://www.iepadvocacia.com.br/#organization" },
+          "description": "Especialista em Direito Processual e Tecnologia. OAB/CE 37342."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.iepadvocacia.com.br/#website",
+          "url": "https://www.iepadvocacia.com.br",
+          "name": "Campelo Advogados",
+          "publisher": { "@id": "https://www.iepadvocacia.com.br/#organization" },
+          "inLanguage": "pt-BR"
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF5C00",
+              secondary: "#B84200",
+              "bg-dark": "#000000",
+              "glass": "rgba(255, 255, 255, 0.03)",
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 8s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              glow: {
+                '0%, 100%': { opacity: 0.2 },
+                '50%': { opacity: 0.5 },
+              }
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        cursor: default;
+      }
+      .grain {
+        position: fixed;
+        inset: -100%;
+        z-index: 9999;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: 0.05;
+        pointer-events: none;
+        animation: grain 8s steps(10) infinite;
+      }
+      @keyframes grain {
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-5%, -10%); }
+        30% { transform: translate(3%, -15%); }
+        50% { transform: translate(12%, 9%); }
+        70% { transform: translate(-3%, 12%); }
+        90% { transform: translate(15%, 4%); }
+      }
+      .spotlight {
+        position: absolute;
+        width: 1000px;
+        height: 1000px;
+        background: radial-gradient(circle, rgba(255, 92, 0, 0.1) 0%, transparent 70%);
+        filter: blur(120px);
+        pointer-events: none;
+      }
+      .horizon-light {
+        position: relative;
+        overflow: hidden;
+      }
+      .horizon-light::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 92, 0, 0.8), transparent);
+        box-shadow: 0 0 50px 2px rgba(255, 92, 0, 0.4);
+      }
+      .bento-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .bento-card:hover {
+        border-color: rgba(255, 92, 0, 0.4);
+        transform: translateY(-5px);
+        background: linear-gradient(135deg, rgba(255, 92, 0, 0.05) 0%, transparent 100%);
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: #000; }
+      ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #FF5C00; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+      .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+      /* Acessibilidade: foco visível para teclado */
+      a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible { outline: 2px solid #FF5C00; outline-offset: 2px; }
+      a:focus-visible, button:focus-visible { border-radius: 0.25rem; }
+      /* Respeitar preferência de redução de movimento */
+      @media (prefers-reduced-motion: reduce) {
+        .grain { animation: none !important; }
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      }
+      /* Preload */
+      #preload {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transition: opacity 0.6s ease-out;
+      }
+      #preload.preload-leave {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #preload .preload-text {
+        opacity: 0;
+        animation: preload-text-in 0.5s ease-out 0.2s forwards;
+      }
+      @keyframes preload-text-in {
+        to { opacity: 1; }
+      }
+      #preload .preload-word {
+        display: inline-block;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(0.4em);
+        animation: preload-word-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      #preload .preload-word:first-child {
+        animation-delay: 0.35s;
+      }
+      #preload .preload-word.preload-advogados {
+        animation-delay: 0.65s;
+        margin-left: 0.25rem;
+      }
+      @media (min-width: 640px) {
+        #preload .preload-word.preload-advogados { margin-left: 0.75rem; }
+      }
+      @keyframes preload-word-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      #preload .preload-sub {
+        opacity: 0;
+        animation: preload-text-in 0.5s ease-out 1.15s forwards;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #preload .preload-text, #preload .preload-word, #preload .preload-sub { animation: none; opacity: 1; transform: none; }
+      }
+      /* Menu mobile */
+      #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+      #mobile-menu.mobile-open { max-height: 80vh; overflow-y: auto; }
+      @media (min-width: 768px) { #mobile-menu { max-height: none; overflow: visible; } }
+      /* Evitar zoom em inputs no iOS */
+      input, select, textarea { font-size: 16px; }
+      /* Touch targets mínimos (44px) */
+      @media (max-width: 767px) {
+        .touch-target { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+      }
+    </style>
+</head>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <!-- Preload -->
+    <div id="preload" role="img" aria-label="Campelo Advogados">
+      <div class="preload-text text-center px-6">
+        <div class="font-black text-4xl sm:text-5xl md:text-6xl tracking-tighter leading-none text-white">
+          <span class="preload-word">CAMPELO</span><span class="preload-word preload-advogados text-primary">ADVOGADOS</span>
+        </div>
+        <p class="preload-sub text-slate-300 text-[10px] uppercase tracking-[0.4em] font-bold mt-4">Excelência Jurídica</p>
+      </div>
+    </div>
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-black focus:font-bold focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2 rounded">Pular para o conteúdo</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/95 backdrop-blur-xl" aria-label="Menu principal">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 sm:gap-4 group cursor-pointer min-w-0" id="logo-header" role="button" tabindex="0" aria-label="Campelo Advogados - Ir para o topo da página">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/20 group-hover:border-primary/50 transition-all flex-shrink-0">
+            <span class="material-symbols-outlined filled text-primary text-2xl sm:text-3xl font-light" aria-hidden="true">balance</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="font-black text-base sm:text-xl tracking-tighter leading-none text-white truncate">CAMPELO <span class="text-primary">ADVOGADOS</span></span>
+            <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-300 font-bold block">Excelência Jurídica</span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 lg:gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+          <a class="hover:text-primary transition-colors" href="#escritorio">O Escritório</a>
+          <a class="hover:text-primary transition-colors" href="#areas">Atuação</a>
+          <a class="hover:text-primary transition-colors" href="#metodologia">Metodologia</a>
+          <a class="hover:text-primary transition-colors" href="#lideranca">Liderança</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button type="button" id="menu-toggle" class="md:hidden touch-target p-2 rounded-lg text-white hover:bg-white/10 focus:bg-white/10 transition-colors" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
+          </button>
+          <button type="button" class="bg-primary text-black text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,92,0,0.2)] touch-target" aria-label="Agendar consulta com o escritório">
+            Agendar Consulta
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="md:hidden bg-black border-t border-white/5" aria-hidden="true">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+          <a class="py-3 px-2 text-sm font-bold uppercase tracking-wider text-slate-300 hover:text-primary hover:bg-white/5 rounded-lg transition-colors" href="#escritorio">O Escritório</a>
+          <a class="py-3 px-2 text-sm font-bold uppercase tracking-wider text-slate-300 hover:text-primary hover:bg-white/5 rounded-lg transition-colors" href="#areas">Atuação</a>
+          <a class="py-3 px-2 text-sm font-bold uppercase tracking-wider text-slate-300 hover:text-primary hover:bg-white/5 rounded-lg transition-colors" href="#metodologia">Metodologia</a>
+          <a class="py-3 px-2 text-sm font-bold uppercase tracking-wider text-slate-300 hover:text-primary hover:bg-white/5 rounded-lg transition-colors" href="#lideranca">Liderança</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col bg-black">
+      <main id="main-content" role="main">
+        <!-- Hero -->
+        <section class="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 pb-32 sm:pb-48 md:pb-60 overflow-hidden horizon-light" aria-labelledby="hero-title">
+          <div class="spotlight -top-1/4 left-1/2 -translate-x-1/2 opacity-40" aria-hidden="true"></div>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center pt-8 sm:pt-[50px] pb-8 sm:pb-[50px]">
+            <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] font-extrabold tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 text-white text-balance px-1">
+              Excelência e <br/>
+              <span class="text-primary italic">Compromisso</span> <br/>
+              com a Justiça.
+            </h1>
+            <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-400 mb-10 sm:mb-16 leading-relaxed font-medium px-1">
+              Há mais de uma década defendendo os direitos e interesses de nossos clientes com dedicação, ética e competência. Soluções jurídicas personalizadas para cada desafio.
+            </p>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-8 w-full sm:w-auto max-w-md sm:max-w-none mx-auto">
+              <button type="button" class="w-full sm:w-auto bg-primary text-black font-black uppercase tracking-[0.3em] text-[10px] px-8 sm:px-16 py-4 sm:py-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_60px_rgba(255,92,0,0.3)] touch-target min-h-[48px] sm:min-h-0" aria-label="Abrir canal de fale conosco (contato)">Fale Conosco</button>
+              <a href="#areas" class="w-full sm:w-auto bento-card px-8 sm:px-16 py-4 sm:py-8 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] text-white/80 group border-primary/20 inline-flex items-center justify-center min-h-[48px] sm:min-h-0">
+                Nossas Áreas
+                <span class="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-y-1" aria-hidden="true">expand_more</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section class="min-h-screen py-12 md:py-16 relative bg-black overflow-hidden flex flex-col justify-center" id="escritorio" aria-labelledby="escritorio-title">
+          <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="relative">
+                <div class="absolute -top-20 -left-20 spotlight opacity-30" aria-hidden="true"></div>
+                <span class="text-primary font-bold tracking-[0.5em] text-[10px] uppercase block mb-4">Tradição e Inovação</span>
+                <h2 id="escritorio-title" class="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tighter text-white mb-5 sm:mb-6 leading-none">
+                  Compromisso com a <br/> <span class="text-primary italic">Excelência Jurídica.</span>
+                </h2>
+                <div class="space-y-4 text-slate-400 text-base md:text-lg leading-relaxed font-medium">
+                  <p>A Campelo Advogados, sob a liderança do Dr. Cláudio Pacheco Campelo, é um escritório que combina tradição e modernidade na prestação de serviços jurídicos de alta qualidade.</p>
+                  <p>Nossa missão é oferecer soluções jurídicas eficazes e personalizadas, sempre pautadas pela ética, transparência e dedicação aos interesses de nossos clientes.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-8" role="list" aria-label="Estatísticas do escritório">
+                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="15 ou mais anos de experiência">
+                    <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">15+</p>
+                    <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Anos de Experiência</p>
+                  </div>
+                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="500 ou mais casos de sucesso">
+                    <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">500+</p>
+                    <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Casos de Sucesso</p>
+                  </div>
+                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="98% dos clientes satisfeitos">
+                    <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">98%</p>
+                    <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Clientes Satisfeitos</p>
+                  </div>
+                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="Resposta em até 24 horas">
+                    <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">24h</p>
+                    <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Resposta Rápida</p>
+                  </div>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="bento-card rounded-[3rem] p-3 aspect-[4/5] max-h-[70vh] overflow-hidden relative group">
+                  <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" alt="Sala do escritório Campelo Advogados com estante de livros jurídicos e ambiente profissional" class="w-full h-full object-cover rounded-2xl sm:rounded-[2.5rem] opacity-50 group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" aria-hidden="true"></div>
+                  <div class="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 md:bottom-12 md:left-12 md:right-12">
+                    <div class="w-10 h-1 bg-primary mb-3"></div>
+                    <p class="text-white font-extrabold text-xl md:text-2xl mb-2">Advocacia de Alta Performance</p>
+                    <p class="text-slate-400 text-sm font-medium">Atendimento humanizado e análise detalhada de cada caso.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features - Áreas de Atuação -->
+        <section class="min-h-screen py-12 md:py-16 relative bg-black flex flex-col justify-center" id="areas" aria-labelledby="areas-title">
+          <div class="spotlight top-1/2 -right-1/4 opacity-20" aria-hidden="true"></div>
+          <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="mb-8 md:mb-10">
+              <span class="text-primary font-bold tracking-[0.5em] text-[10px] uppercase block mb-3">Expertise Jurídica</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-none text-white">Áreas de Atuação.</h2>
+              <p class="text-slate-300 mt-4 text-base max-w-2xl mx-auto font-medium">
+                Expertise jurídica completa para atender todas as suas necessidades com precisão técnica.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors" aria-hidden="true">balance</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito Civil</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Contratos, responsabilidade civil, direitos reais, família e sucessões. Assessoria completa em questões patrimoniais e pessoais.</p>
+              </div>
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors">apartment</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito Empresarial</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Constituição de empresas, contratos comerciais, fusões e aquisições, recuperação judicial e compliance corporativo.</p>
+              </div>
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors" aria-hidden="true">work</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito do Trabalho</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Defesa em reclamações trabalhistas, elaboração de contratos, consultoria preventiva e negociações sindicais.</p>
+              </div>
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors">account_balance</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito Tributário</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Planejamento tributário, defesas fiscais, recuperação de créditos e consultoria em questões tributárias complexas.</p>
+              </div>
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors" aria-hidden="true">account_balance_wallet</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito Administrativo</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Licitações, contratos administrativos, servidores públicos e defesa em processos administrativos.</p>
+              </div>
+              <div class="bento-card p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/[0.02]">
+                <div class="mb-4">
+                  <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary transition-all duration-500 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                    <span class="material-symbols-outlined text-white text-2xl md:text-3xl group-hover:text-black transition-colors" aria-hidden="true">person_search</span>
+                  </div>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold mb-3 group-hover:text-primary transition-colors">Direito do Consumidor</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-medium leading-relaxed group-hover:text-slate-300 transition-colors">Defesa dos direitos do consumidor, ações indenizatórias e resolução de conflitos com fornecedores.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Methodology -->
+        <section class="py-16 sm:py-24 md:py-32 lg:py-48 relative bg-black" id="metodologia" aria-labelledby="metodologia-title">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-20 md:mb-32">
+              <span class="text-primary font-bold tracking-[0.5em] text-[10px] uppercase">Diferenciais</span>
+              <h2 id="metodologia-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-[6.5rem] font-extrabold mt-6 sm:mt-8 tracking-tighter text-white leading-none">Nossos <br/> Pilares.</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8" role="list">
+              <div class="group text-center" role="listitem">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                  <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">ads_click</span>
+                </div>
+                <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Atendimento Personalizado</h3>
+                <p class="text-slate-300 text-sm leading-relaxed font-medium">Cada cliente recebe atenção individualizada e estratégias jurídicas customizadas para seu caso específico.</p>
+              </div>
+              <div class="group text-center" role="listitem">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                  <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">bolt</span>
+                </div>
+                <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Agilidade e Eficiência</h3>
+                <p class="text-slate-300 text-sm leading-relaxed font-medium">Resposta rápida e acompanhamento constante de todos os processos e demandas.</p>
+              </div>
+              <div class="group text-center" role="listitem">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                  <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">verified_user</span>
+                </div>
+                <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Ética e Transparência</h3>
+                <p class="text-slate-300 text-sm leading-relaxed font-medium">Conduta íntegra e comunicação clara sobre todos os aspectos do seu caso.</p>
+              </div>
+              <div class="group text-center" role="listitem">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                  <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">menu_book</span>
+                </div>
+                <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Conhecimento Especializado</h3>
+                <p class="text-slate-300 text-sm leading-relaxed font-medium">Equipe com formação sólida e atualização constante nas mais diversas áreas do Direito.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Founder -->
+        <section class="py-16 sm:py-24 md:py-32 lg:py-48 relative bg-black" id="lideranca" aria-labelledby="lideranca-title">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="bento-card rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] p-6 sm:p-8 md:p-12 lg:p-24 overflow-hidden relative border-primary/10">
+              <div class="absolute top-0 right-0 spotlight opacity-20 translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
+                <div class="order-2 lg:order-1">
+                  <span class="text-primary font-bold tracking-[0.5em] text-[10px] uppercase block mb-8">Liderança Técnica</span>
+                  <h2 id="lideranca-title" class="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-8">
+                    Cláudio Pacheco <br/> <span class="text-primary">Campelo.</span>
+                  </h2>
+                  <p class="text-slate-300 text-lg mb-10 leading-relaxed italic">
+                    "O Direito não é estático. Ele exige uma mente inquieta e uma técnica impecável para transformar leis em justiça real para nossos clientes."
+                  </p>
+                  <div class="space-y-4 mb-12">
+                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
+                      <span class="material-symbols-outlined text-primary" aria-hidden="true">verified</span>
+                      OAB/CE 37342
+                    </div>
+                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
+                      <span class="material-symbols-outlined text-primary" aria-hidden="true">school</span>
+                      Especialista em Direito Processual e Tecnologia
+                    </div>
+                  </div>
+                </div>
+                <div class="order-1 lg:order-2 flex justify-center">
+                  <div class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] rounded-2xl sm:rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="/imagem4.png" alt="Dr. Cláudio Pacheco Campelo, advogado e fundador do escritório Campelo Advogados" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" aria-hidden="true"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-16 sm:py-24 md:py-32 lg:py-60 relative bg-black flex flex-col items-center justify-center text-center overflow-hidden" id="contato" aria-labelledby="contato-title">
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-right from-transparent via-primary to-transparent shadow-[0_0_80px_10px_#FF5C00] opacity-60" aria-hidden="true"></div>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+            <div class="mb-10 sm:mb-16 md:mb-24">
+              <span class="text-primary font-bold tracking-[0.3em] text-[10px] uppercase mb-4 sm:mb-6 block">Contato</span>
+              <h2 id="contato-title" class="text-4xl sm:text-5xl md:text-[7rem] font-extrabold tracking-tighter text-white">Entre em Contato.</h2>
+              <p class="text-slate-300 mt-4 sm:mt-6 font-medium uppercase tracking-[0.3em] text-xs">Estamos prontos para atender você</p>
+            </div>
+            <div class="bento-card p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-3xl md:rounded-[4rem] border-primary/20 max-w-5xl mx-auto relative group">
+              <div class="absolute -inset-1 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-20 transition-opacity" aria-hidden="true"></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 text-left relative z-10">
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-endereco">
+                 <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">location_on</span>
+                 </div>
+                  <div class="min-w-0">
+                    <h3 id="contato-endereco" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">Endereço</h3>
+                    <p class="text-white font-extrabold text-base sm:text-lg">Fortaleza, Ceará, Brasil</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-telefone">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">phone_in_talk</span>
+                 </div>
+                  <div class="min-w-0">
+                    <h3 id="contato-telefone" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">Telefone</h3>
+                    <p class="text-white font-extrabold text-base sm:text-lg break-all">(85) 98854-2604</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-email">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">mail</span>
+                  </div>
+                  <div class="min-w-0">
+                    <h3 id="contato-email" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">E-mail</h3>
+                    <p class="text-white font-extrabold text-base sm:text-lg break-all">contato@iepadvocacia.com.br</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-horario">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">schedule</span>
+                  </div>
+                  <div class="min-w-0">
+                    <h3 id="contato-horario" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">Horário</h3>
+                    <p class="text-white font-extrabold text-base sm:text-lg">Segunda a Sexta: 8h às 18h</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-10 pt-10 sm:mt-16 sm:pt-16 border-t border-white/5 text-center md:text-left">
+                <a href="https://wa.me/5585988542604" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-black font-black uppercase tracking-[0.4em] px-8 sm:px-16 py-4 sm:py-8 rounded-2xl sm:rounded-3xl hover:shadow-[0_0_50px_#FF5C00] transition-all text-[10px] min-h-[48px] flex items-center justify-center" aria-label="Abrir conversa no WhatsApp com Campelo Advogados">Fale agora no WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="pt-12 sm:pt-16 md:pt-24 pb-10 sm:pb-12 md:pb-16 bg-black relative border-t border-white/5" role="contentinfo" aria-label="Rodapé do site">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-12 md:gap-16 mb-12 sm:mb-20 md:mb-24">
+            <div class="col-span-1 md:col-span-1">
+              <h3 class="text-white font-black text-lg sm:text-xl mb-6 sm:mb-8 tracking-tighter">CAMPELO ADVOGADOS</h3>
+              <div class="space-y-2 text-[10px] sm:text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-widest">
+                <p>Cláudio Pacheco Campelo</p>
+                <p>Sociedade Individual de Advocacia</p>
+                <p>CNPJ: 53.326.544/0001-04</p>
+                <p>OAB/CE 37342</p>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-slate-300 font-black text-[10px] uppercase tracking-[0.3em] mb-6 sm:mb-8">Links Rápidos</h4>
+              <ul class="space-y-3 sm:space-y-4 text-xs font-bold text-slate-300 uppercase tracking-widest">
+                <li><a href="#escritorio" class="hover:text-primary transition-colors">Sobre Nós</a></li>
+                <li><a href="#areas" class="hover:text-primary transition-colors">Áreas de Atuação</a></li>
+                <li><a href="#contato" class="hover:text-primary transition-colors">Contato</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors" aria-label="Política de Privacidade (página em breve)">Política de Privacidade</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-slate-300 font-black text-[10px] uppercase tracking-[0.3em] mb-6 sm:mb-8">Áreas de Atuação</h4>
+              <ul class="space-y-3 sm:space-y-4 text-xs font-bold text-slate-300 uppercase tracking-widest">
+                <li>Direito Civil</li>
+                <li>Direito Empresarial</li>
+                <li>Direito Trabalhista</li>
+                <li>Direito Tributário</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-slate-300 font-black text-[10px] uppercase tracking-[0.3em] mb-6 sm:mb-8">Localização</h4>
+              <ul class="space-y-3 sm:space-y-4 text-xs font-bold text-slate-300 leading-relaxed uppercase tracking-widest">
+                <li class="flex gap-3 items-start"><span class="material-symbols-outlined text-primary text-sm flex-shrink-0" aria-hidden="true">location_on</span> Fortaleza, CE</li>
+                <li class="flex gap-3 items-center"><span class="material-symbols-outlined text-primary text-sm flex-shrink-0" aria-hidden="true">phone</span> (85) 98854-2604</li>
+                <li class="flex gap-3 items-start"><span class="material-symbols-outlined text-primary text-sm flex-shrink-0" aria-hidden="true">mail</span> <span class="break-all">contato@iepadvocacia.com.br</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center mb-10 sm:mb-16 px-4 sm:px-10">
+            <blockquote class="text-primary italic font-medium text-lg mb-4">
+              <p>"A advocacia não é profissão de covardes"</p>
+              <cite class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 not-italic block mt-2">— Rui Barbosa</cite>
+            </blockquote>
+          </div>
+          <div class="pt-8 sm:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8 text-center md:text-left">
+            <p class="text-[8px] sm:text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">© 2024 CAMPELO ADVOGADOS | TODOS OS DIREITOS RESERVADOS</p>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+              <a href="#" class="text-[9px] font-black text-slate-300 hover:text-primary uppercase tracking-widest transition-colors" aria-label="Política de Privacidade (página em breve)">Política de Privacidade</a>
+              <a href="#" class="text-[9px] font-black text-slate-300 hover:text-primary uppercase tracking-widest transition-colors" aria-label="Termos de Uso (página em breve)">Termos de Uso</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      (function() {
+        var preload = document.getElementById('preload');
+        var duration = 2800;
+        var fadeOut = 600;
+        setTimeout(function() {
+          preload.classList.add('preload-leave');
+          setTimeout(function() { preload.remove(); }, fadeOut);
+        }, duration);
+      })();
+      (function() {
+        var toggle = document.getElementById('menu-toggle');
+        var menu = document.getElementById('mobile-menu');
+        if (!toggle || !menu) return;
+        toggle.addEventListener('click', function() {
+          var open = menu.classList.toggle('mobile-open');
+          toggle.setAttribute('aria-expanded', open);
+          menu.setAttribute('aria-hidden', !open);
+          toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+          toggle.querySelector('.material-symbols-outlined').textContent = open ? 'close' : 'menu';
+        });
+        menu.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            menu.classList.remove('mobile-open');
+            menu.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Abrir menu');
+            toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          });
+        });
+      })();
+      document.getElementById('logo-header').addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      document.getElementById('logo-header').addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    </script>
+</body>
+</html>
