@@ -84,47 +84,24 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonte crítica para texto/LCP: carrega no caminho crítico -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#FF5C00",
-              secondary: "#B84200",
-              "bg-dark": "#000000",
-              "glass": "rgba(255, 255, 255, 0.03)",
-            },
-            fontFamily: {
-              sans: ["Plus Jakarta Sans", "sans-serif"],
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'glow': 'glow 8s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0px)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              glow: {
-                '0%, 100%': { opacity: 0.2 },
-                '50%': { opacity: 0.5 },
-              }
-            }
-          },
-        },
-      };
-    </script>
+    <!-- Ícones: carregamento assíncrono para não bloquear LCP (fonte ~3.7MB fora do caminho crítico) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" /></noscript>
     <style>
+      html {
+        scrollbar-gutter: stable;
+      }
       body {
         background-color: #000000;
         color: #ffffff;
         cursor: default;
+        width: 100%;
+        margin: 0;
       }
       .grain {
         position: fixed;
@@ -175,6 +152,76 @@
         border-color: rgba(255, 92, 0, 0.4);
         transform: translateY(-5px);
         background: linear-gradient(135deg, rgba(255, 92, 0, 0.05) 0%, transparent 100%);
+      }
+      /* CLS: layout estável da seção #lideranca antes do Tailwind (evita shift quando o script roda) */
+      #lideranca {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-color: #000;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      @media (min-width: 640px) {
+        #lideranca { padding-top: 5rem; padding-bottom: 5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+      }
+      @media (min-width: 768px) {
+        #lideranca { padding-bottom: 6rem; }
+      }
+      #lideranca > div {
+        width: 100%;
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #lideranca .bento-card {
+        width: 100%;
+        max-height: calc(100vh - 8rem);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        overflow: hidden;
+        overflow-y: auto;
+        border-radius: 1rem;
+      }
+      @media (min-width: 640px) {
+        #lideranca .bento-card { padding-left: 2rem; padding-right: 2rem; border-radius: 3rem; }
+      }
+      @media (min-width: 768px) {
+        #lideranca .bento-card { padding-left: 3rem; padding-right: 3rem; border-radius: 4rem; }
+      }
+      @media (min-width: 1024px) {
+        #lideranca .bento-card { padding-left: 6rem; padding-right: 6rem; }
+      }
+      #lideranca .bento-card > div.grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: center;
+      }
+      @media (min-width: 640px) {
+        #lideranca .bento-card > div.grid { gap: 4rem; }
+      }
+      @media (min-width: 1024px) {
+        #lideranca .bento-card > div.grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+      }
+      #lideranca [class*="aspect-"] { aspect-ratio: 3 / 4; }
+      /* Overlay: imagem e card como uma superfície só (fundo preto + vinheta nas bordas) */
+      .lideranca-photo-overlay {
+        background:
+          linear-gradient(to top, #000 0%, rgba(0,0,0,0.85) 15%, transparent 45%),
+          radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(0,0,0,0.4) 100%);
+        pointer-events: none;
       }
       .text-balance {
         text-wrap: balance;
@@ -312,6 +359,48 @@
 
     <div class="min-h-screen flex flex-col bg-black">
       <main id="main-content" role="main">
+        <!-- Founder (primeira seção) - centralizada na viewport, sem corte -->
+        <section class="min-h-[100vh] min-h-[100dvh] flex items-center justify-center relative bg-black pt-16 sm:pt-20 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6" id="lideranca" aria-labelledby="lideranca-title">
+          <div class="w-full max-w-7xl mx-auto box-border flex justify-center items-center">
+            <div class="bento-card rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] pt-[10px] pb-[10px] px-6 sm:px-8 md:px-12 lg:px-24 overflow-hidden relative border-primary/10 w-full max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <div class="absolute top-0 right-0 spotlight opacity-20 translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
+                <div class="order-2 lg:order-1">
+                  <h2 id="lideranca-title" class="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-8">
+                    Cláudio Pacheco <br/> <span class="text-primary">Campelo.</span>
+                  </h2>
+                  <p class="text-slate-300 text-lg mb-10 leading-relaxed italic">
+                    "O Direito não é estático. Ele exige uma mente inquieta e uma técnica impecável para transformar leis em justiça real para nossos clientes."
+                  </p>
+                  <div class="space-y-4 mb-12">
+                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
+                      <span class="material-symbols-outlined text-primary" aria-hidden="true">verified</span>
+                      OAB/CE 37342
+                    </div>
+                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
+                      <span class="material-symbols-outlined text-primary" aria-hidden="true">school</span>
+                      Especialista em Direito Processual e Tecnologia
+                    </div>
+                  </div>
+                  <button type="button" class="modal-contato-trigger bg-primary text-black font-black uppercase tracking-[0.3em] text-[10px] px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,92,0,0.25)] min-h-[48px] inline-flex items-center gap-2" aria-label="Abrir opções de contato">
+                    Entrar em contato
+                    <span class="material-symbols-outlined text-lg" aria-hidden="true">open_in_new</span>
+                  </button>
+                </div>
+                <div class="order-1 lg:order-2 flex justify-center">
+                  <div class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] rounded-2xl sm:rounded-[3rem] overflow-hidden shadow-2xl">
+                    <picture>
+                      <source type="image/webp" srcset="/imagem4.webp" />
+                      <img src="/imagem4.png" alt="Dr. Cláudio Pacheco Campelo, advogado e fundador do escritório Campelo Advogados" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" fetchpriority="high" width="900" height="1200" decoding="async" />
+                    </picture>
+                    <div class="absolute inset-0 lideranca-photo-overlay" aria-hidden="true"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Hero -->
         <section class="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 pb-32 sm:pb-48 md:pb-60 overflow-hidden horizon-light" aria-labelledby="hero-title">
           <div class="spotlight -top-1/4 left-1/2 -translate-x-1/2 opacity-40" aria-hidden="true"></div>
@@ -325,7 +414,7 @@
               Há mais de uma década defendendo os direitos e interesses de nossos clientes com dedicação, ética e competência. Soluções jurídicas personalizadas para cada desafio.
             </p>
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-8 w-full sm:w-auto max-w-md sm:max-w-none mx-auto">
-              <button type="button" class="w-full sm:w-auto bg-primary text-black font-black uppercase tracking-[0.3em] text-[10px] px-8 sm:px-16 py-4 sm:py-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_60px_rgba(255,92,0,0.3)] touch-target min-h-[48px] sm:min-h-0" aria-label="Abrir canal de fale conosco (contato)">Fale Conosco</button>
+              <button type="button" class="modal-contato-trigger w-full sm:w-auto bg-primary text-black font-black uppercase tracking-[0.3em] text-[10px] px-8 sm:px-16 py-4 sm:py-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_60px_rgba(255,92,0,0.3)] touch-target min-h-[48px] sm:min-h-0" aria-label="Abrir opções de contato">Fale Conosco</button>
               <a href="#areas" class="w-full sm:w-auto bento-card px-8 sm:px-16 py-4 sm:py-8 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] text-white/80 group border-primary/20 inline-flex items-center justify-center min-h-[48px] sm:min-h-0">
                 Nossas Áreas
                 <span class="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-y-1" aria-hidden="true">expand_more</span>
@@ -349,7 +438,7 @@
                   <p>Nossa missão é oferecer soluções jurídicas eficazes e personalizadas, sempre pautadas pela ética, transparência e dedicação aos interesses de nossos clientes.</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mt-8" role="list" aria-label="Estatísticas do escritório">
-                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="15 ou mais anos de experiência">
+                  <div class="bento-card p-5 md:p-6 rounded-2xl" role="listitem" aria-label="15 ou mais anos de experiência">
                     <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">15+</p>
                     <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Anos de Experiência</p>
                   </div>
@@ -357,11 +446,11 @@
                     <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">500+</p>
                     <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Casos de Sucesso</p>
                   </div>
-                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="98% dos clientes satisfeitos">
+                  <div class="bento-card p-5 md:p-6 rounded-2xl" role="listitem" aria-label="98% dos clientes satisfeitos">
                     <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">98%</p>
                     <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Clientes Satisfeitos</p>
                   </div>
-                  <div class="bento-card p-5 md:p-6 rounded-2xl border-primary/5" role="listitem" aria-label="Resposta em até 24 horas">
+                  <div class="bento-card p-5 md:p-6 rounded-2xl" role="listitem" aria-label="Resposta em até 24 horas">
                     <p class="text-3xl md:text-4xl font-extrabold text-primary mb-1">24h</p>
                     <p class="text-[9px] font-black uppercase tracking-widest text-slate-300">Resposta Rápida</p>
                   </div>
@@ -461,68 +550,32 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8" role="list">
               <div class="group text-center" role="listitem">
-                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
                   <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">ads_click</span>
                 </div>
                 <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Atendimento Personalizado</h3>
                 <p class="text-slate-300 text-sm leading-relaxed font-medium">Cada cliente recebe atenção individualizada e estratégias jurídicas customizadas para seu caso específico.</p>
               </div>
               <div class="group text-center" role="listitem">
-                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
                   <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">bolt</span>
                 </div>
                 <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Agilidade e Eficiência</h3>
                 <p class="text-slate-300 text-sm leading-relaxed font-medium">Resposta rápida e acompanhamento constante de todos os processos e demandas.</p>
               </div>
               <div class="group text-center" role="listitem">
-                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
                   <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">verified_user</span>
                 </div>
                 <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Ética e Transparência</h3>
                 <p class="text-slate-300 text-sm leading-relaxed font-medium">Conduta íntegra e comunicação clara sobre todos os aspectos do seu caso.</p>
               </div>
               <div class="group text-center" role="listitem">
-                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
+                <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-10 bg-white/5 group-hover:bg-primary/10 transition-all shadow-[0_0_30px_rgba(255,92,0,0.1)]">
                   <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">menu_book</span>
                 </div>
                 <h3 class="text-xl font-extrabold mb-6 text-white group-hover:text-primary transition-colors">Conhecimento Especializado</h3>
                 <p class="text-slate-300 text-sm leading-relaxed font-medium">Equipe com formação sólida e atualização constante nas mais diversas áreas do Direito.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Founder -->
-        <section class="py-16 sm:py-24 md:py-32 lg:py-48 relative bg-black" id="lideranca" aria-labelledby="lideranca-title">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="bento-card rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] p-6 sm:p-8 md:p-12 lg:p-24 overflow-hidden relative border-primary/10">
-              <div class="absolute top-0 right-0 spotlight opacity-20 translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
-                <div class="order-2 lg:order-1">
-                  <span class="text-primary font-bold tracking-[0.5em] text-[10px] uppercase block mb-8">Liderança Técnica</span>
-                  <h2 id="lideranca-title" class="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-8">
-                    Cláudio Pacheco <br/> <span class="text-primary">Campelo.</span>
-                  </h2>
-                  <p class="text-slate-300 text-lg mb-10 leading-relaxed italic">
-                    "O Direito não é estático. Ele exige uma mente inquieta e uma técnica impecável para transformar leis em justiça real para nossos clientes."
-                  </p>
-                  <div class="space-y-4 mb-12">
-                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
-                      <span class="material-symbols-outlined text-primary" aria-hidden="true">verified</span>
-                      OAB/CE 37342
-                    </div>
-                    <div class="flex items-center gap-4 text-slate-400 font-bold text-sm">
-                      <span class="material-symbols-outlined text-primary" aria-hidden="true">school</span>
-                      Especialista em Direito Processual e Tecnologia
-                    </div>
-                  </div>
-                </div>
-                <div class="order-1 lg:order-2 flex justify-center">
-                  <div class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] rounded-2xl sm:rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-                    <img src="/imagem4.png" alt="Dr. Cláudio Pacheco Campelo, advogado e fundador do escritório Campelo Advogados" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" aria-hidden="true"></div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -537,11 +590,11 @@
               <h2 id="contato-title" class="text-4xl sm:text-5xl md:text-[7rem] font-extrabold tracking-tighter text-white">Entre em Contato.</h2>
               <p class="text-slate-300 mt-4 sm:mt-6 font-medium uppercase tracking-[0.3em] text-xs">Estamos prontos para atender você</p>
             </div>
-            <div class="bento-card p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-3xl md:rounded-[4rem] border-primary/20 max-w-5xl mx-auto relative group">
+            <div class="bento-card p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-3xl md:rounded-[4rem] max-w-5xl mx-auto relative group">
               <div class="absolute -inset-1 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-20 transition-opacity" aria-hidden="true"></div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 text-left relative z-10">
                 <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-endereco">
-                 <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                 <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                     <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">location_on</span>
                  </div>
                   <div class="min-w-0">
@@ -550,7 +603,7 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-telefone">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">phone_in_talk</span>
                  </div>
                   <div class="min-w-0">
@@ -559,7 +612,7 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-email">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                     <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">mail</span>
                   </div>
                   <div class="min-w-0">
@@ -568,7 +621,7 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-4 sm:gap-6 md:gap-8" role="group" aria-labelledby="contato-horario">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/30 flex-shrink-0">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                     <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl" aria-hidden="true">schedule</span>
                   </div>
                   <div class="min-w-0">
@@ -577,13 +630,66 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-10 pt-10 sm:mt-16 sm:pt-16 border-t border-white/5 text-center md:text-left">
+              <div class="mt-10 pt-10 sm:mt-16 sm:pt-16 text-center md:text-left">
                 <a href="https://wa.me/5585988542604" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-black font-black uppercase tracking-[0.4em] px-8 sm:px-16 py-4 sm:py-8 rounded-2xl sm:rounded-3xl hover:shadow-[0_0_50px_#FF5C00] transition-all text-[10px] min-h-[48px] flex items-center justify-center" aria-label="Abrir conversa no WhatsApp com Campelo Advogados">Fale agora no WhatsApp</a>
               </div>
             </div>
           </div>
         </section>
       </main>
+
+      <!-- Botão flutuante WhatsApp (abre modal de contato) -->
+      <button type="button" class="modal-contato-trigger fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] transition-all focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-black flex items-center justify-center" aria-label="Abrir opções de contato (WhatsApp)">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </button>
+
+      <!-- Modal Contato -->
+      <div id="modal-contato" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-contato-title" aria-hidden="true">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-contato-overlay" aria-hidden="true"></div>
+        <div class="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto flex flex-col bento-card rounded-2xl sm:rounded-3xl border border-primary/20 shadow-2xl transform transition-transform duration-300 scale-95 modal-contato-panel">
+          <div class="flex items-center justify-between p-5 sm:p-6 flex-shrink-0">
+            <h2 id="modal-contato-title" class="text-primary font-bold tracking-[0.3em] text-[10px] uppercase">Contato</h2>
+            <button type="button" class="modal-contato-close p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Fechar modal de contato">
+              <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+          </div>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 p-5 sm:p-6 gap-0 flex-1 min-h-0" role="list">
+            <li class="p-4 sm:p-5">
+              <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">Endereço</p>
+              <p class="text-white font-extrabold text-sm">Fortaleza, Ceará, Brasil</p>
+            </li>
+            <li class="p-4 sm:p-5">
+              <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-2">Telefones (closers)</p>
+              <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-0.5">
+                  <p class="text-slate-500 font-bold text-[10px] uppercase tracking-wider">Closer A</p>
+                  <a href="tel:+5585988542604" class="text-white font-extrabold text-sm hover:text-primary transition-colors">(85) 98854-2604</a>
+                </div>
+                <div class="flex flex-col gap-0.5">
+                  <p class="text-slate-500 font-bold text-[10px] uppercase tracking-wider">Closer B</p>
+                  <a href="tel:+5585999999999" class="text-white font-extrabold text-sm hover:text-primary transition-colors">(85) 99999-9999</a>
+                </div>
+              </div>
+            </li>
+            <li class="p-4 sm:p-5">
+              <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">E-mail</p>
+              <a href="mailto:contato@iepadvocacia.com.br" class="text-white font-extrabold text-sm break-all hover:text-primary transition-colors">contato@iepadvocacia.com.br</a>
+            </li>
+            <li class="p-4 sm:p-5 border-white/5">
+              <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-1">Horário</p>
+              <p class="text-white font-extrabold text-sm">Segunda a Sexta: 8h às 18h</p>
+            </li>
+          </ul>
+          <div class="p-5 sm:p-6 pt-4 flex-shrink-0">
+            <a href="https://wa.me/5585988542604" target="_blank" rel="noopener noreferrer" class="modal-contato-close w-full inline-flex items-center justify-center gap-2 bg-primary text-black font-black uppercase tracking-[0.3em] text-[10px] px-6 py-4 rounded-2xl hover:shadow-[0_0_40px_rgba(255,92,0,0.3)] transition-all min-h-[48px]" aria-label="Abrir conversa no WhatsApp">
+              <span class="material-symbols-outlined text-lg">chat</span>
+              Fale agora no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Footer -->
       <footer class="pt-12 sm:pt-16 md:pt-24 pb-10 sm:pb-12 md:pb-16 bg-black relative border-t border-white/5" role="contentinfo" aria-label="Rodapé do site">
@@ -675,6 +781,74 @@
       })();
       document.getElementById('logo-header').addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
       document.getElementById('logo-header').addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+
+      (function() {
+        var modal = document.getElementById('modal-contato');
+        if (!modal) return;
+        var overlay = modal.querySelector('.modal-contato-overlay');
+        var panel = modal.querySelector('.modal-contato-panel');
+        var triggers = document.querySelectorAll('.modal-contato-trigger');
+        var closeBtns = modal.querySelectorAll('.modal-contato-close');
+
+        function openModal() {
+          modal.classList.remove('opacity-0', 'pointer-events-none');
+          modal.classList.add('opacity-100', 'pointer-events-auto');
+          modal.setAttribute('aria-hidden', 'false');
+          panel.classList.remove('scale-95');
+          panel.classList.add('scale-100');
+          document.body.style.overflow = 'hidden';
+          var firstFocus = modal.querySelector('a, button');
+          if (firstFocus) firstFocus.focus();
+        }
+        function closeModal() {
+          modal.classList.add('opacity-0', 'pointer-events-none');
+          modal.classList.remove('opacity-100', 'pointer-events-auto');
+          modal.setAttribute('aria-hidden', 'true');
+          panel.classList.add('scale-95');
+          panel.classList.remove('scale-100');
+          document.body.style.overflow = '';
+        }
+
+        triggers.forEach(function(btn) { btn.addEventListener('click', openModal); });
+        if (overlay) overlay.addEventListener('click', closeModal);
+        closeBtns.forEach(function(btn) { btn.addEventListener('click', closeModal); });
+
+        modal.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeModal();
+        });
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF5C00",
+              secondary: "#B84200",
+              "bg-dark": "#000000",
+              "glass": "rgba(255, 255, 255, 0.03)",
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 8s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              glow: {
+                '0%, 100%': { opacity: 0.2 },
+                '50%': { opacity: 0.5 },
+              }
+            }
+          },
+        },
+      };
     </script>
 </body>
 </html>
