@@ -86,13 +86,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossorigin />
+    <link rel="preload" href="/imagem4.webp" as="image" fetchpriority="high" />
     <!-- Fonte crítica para texto/LCP: carrega no caminho crítico -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=optional" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=optional" rel="stylesheet" />
     <!-- Ícones: carregamento assíncrono para não bloquear LCP (fonte ~3.7MB fora do caminho crítico) -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" /></noscript>
     <style>
+      /* CLS: fallback com métricas próximas da Plus Jakarta Sans para reduzir reflow no swap */
+      @font-face {
+        font-family: "Plus Jakarta Sans Fallback";
+        src: local("Arial");
+        size-adjust: 98%;
+        ascent-override: 93%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+      }
       html {
         scrollbar-gutter: stable;
       }
@@ -102,6 +114,7 @@
         cursor: default;
         width: 100%;
         margin: 0;
+        font-family: "Plus Jakarta Sans", "Plus Jakarta Sans Fallback", ui-sans-serif, sans-serif;
       }
       .grain {
         position: fixed;
@@ -153,6 +166,34 @@
         transform: translateY(-5px);
         background: linear-gradient(135deg, rgba(255, 92, 0, 0.05) 0%, transparent 100%);
       }
+      /* CLS: nav com altura fixa desde o primeiro frame (evita empurrar #lideranca quando Tailwind aplica h-16) */
+      nav[aria-label="Menu principal"] {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 50;
+      }
+      nav[aria-label="Menu principal"] > div {
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        box-sizing: border-box;
+      }
+      @media (min-width: 640px) {
+        nav[aria-label="Menu principal"] > div { padding-left: 1.5rem; padding-right: 1.5rem; height: 5rem; }
+      }
+      @media (min-width: 768px) {
+        nav[aria-label="Menu principal"] > div { height: 6rem; }
+      }
       /* CLS: layout estável da seção #lideranca antes do Tailwind (evita shift quando o script roda) */
       #lideranca {
         min-height: 100vh;
@@ -162,6 +203,7 @@
         justify-content: center;
         position: relative;
         background-color: #000;
+        contain: layout;
         padding-top: 4rem;
         padding-bottom: 4rem;
         padding-left: 1rem;
@@ -182,6 +224,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        min-height: calc(100vh - 8rem);
+        contain: layout;
       }
       #lideranca .bento-card {
         width: 100%;
@@ -215,7 +259,31 @@
       @media (min-width: 1024px) {
         #lideranca .bento-card > div.grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
       }
+      /* CLS: ordem dos blocos fixa desde o primeiro frame (evita shift quando Tailwind aplica order) */
+      #lideranca .bento-card > div.grid > div:first-child { order: 2; }
+      #lideranca .bento-card > div.grid > div:last-child { order: 1; }
+      @media (min-width: 1024px) {
+        #lideranca .bento-card > div.grid > div:first-child { order: 1; }
+        #lideranca .bento-card > div.grid > div:last-child { order: 2; }
+      }
       #lideranca [class*="aspect-"] { aspect-ratio: 3 / 4; }
+      /* CLS: reservar espaço da foto LCP desde o primeiro frame (evita shift 0.047) */
+      #lideranca .relative.w-full.max-w-sm {
+        aspect-ratio: 3 / 4;
+        min-height: 0;
+        width: 100%;
+        max-width: 24rem;
+      }
+      @media (min-width: 640px) {
+        #lideranca .relative.w-full.max-w-sm { max-width: 28rem; }
+      }
+      #lideranca .relative.w-full.max-w-sm picture,
+      #lideranca .relative.w-full.max-w-sm img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       /* Overlay: imagem e card como uma superfície só (fundo preto + vinheta nas bordas) */
       .lideranca-photo-overlay {
         background:
@@ -294,10 +362,43 @@
       @media (prefers-reduced-motion: reduce) {
         #preload .preload-text, #preload .preload-word, #preload .preload-sub { animation: none; opacity: 1; transform: none; }
       }
+      /* CLS: #metodologia com layout estável desde o primeiro frame */
+      #metodologia {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        position: relative;
+        background-color: #000;
+      }
+      @media (min-width: 640px) {
+        #metodologia { padding-top: 6rem; padding-bottom: 6rem; }
+      }
+      @media (min-width: 768px) {
+        #metodologia { padding-top: 8rem; padding-bottom: 8rem; }
+      }
+      @media (min-width: 1024px) {
+        #metodologia { padding-top: 12rem; padding-bottom: 12rem; }
+      }
+      #metodologia .max-w-7xl {
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      @media (min-width: 640px) {
+        #metodologia .max-w-7xl { padding-left: 1.5rem; padding-right: 1.5rem; }
+      }
+      #metodologia .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+      @media (min-width: 640px) {
+        #metodologia .grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      }
+      @media (min-width: 768px) {
+        #metodologia .grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+      }
       /* Menu mobile */
       #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
       #mobile-menu.mobile-open { max-height: 80vh; overflow-y: auto; }
-      @media (min-width: 768px) { #mobile-menu { max-height: none; overflow: visible; } }
+      @media (min-width: 768px) { #mobile-menu { display: none !important; } }
       /* Evitar zoom em inputs no iOS */
       input, select, textarea { font-size: 16px; }
       /* Touch targets mínimos (44px) */
@@ -318,7 +419,6 @@
     </div>
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-black focus:font-bold focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2 rounded">Pular para o conteúdo</a>
-    <div class="grain" aria-hidden="true"></div>
 
     <!-- Header -->
     <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/95 backdrop-blur-xl" aria-label="Menu principal">
@@ -391,7 +491,7 @@
                   <div class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] rounded-2xl sm:rounded-[3rem] overflow-hidden shadow-2xl">
                     <picture>
                       <source type="image/webp" srcset="/imagem4.webp" />
-                      <img src="/imagem4.png" alt="Dr. Cláudio Pacheco Campelo, advogado e fundador do escritório Campelo Advogados" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" fetchpriority="high" width="900" height="1200" decoding="async" />
+                      <img fetchpriority="high" src="/imagem4.png" alt="Dr. Cláudio Pacheco Campelo, advogado e fundador do escritório Campelo Advogados" width="900" height="1200" decoding="async" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                     </picture>
                     <div class="absolute inset-0 lideranca-photo-overlay" aria-hidden="true"></div>
                   </div>
@@ -458,7 +558,7 @@
               </div>
               <div class="relative">
                 <div class="bento-card rounded-[3rem] p-3 aspect-[4/5] max-h-[70vh] overflow-hidden relative group">
-                  <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" alt="Sala do escritório Campelo Advogados com estante de livros jurídicos e ambiente profissional" class="w-full h-full object-cover rounded-2xl sm:rounded-[2.5rem] opacity-50 group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                  <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=60&w=800&auto=format&fit=crop" alt="Sala do escritório Campelo Advogados com estante de livros jurídicos e ambiente profissional" class="w-full h-full object-cover rounded-2xl sm:rounded-[2.5rem] opacity-50 group-hover:scale-110 transition-transform duration-1000" loading="lazy" width="800" height="533" decoding="async" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" aria-hidden="true"></div>
                   <div class="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 md:bottom-12 md:left-12 md:right-12">
                     <div class="w-10 h-1 bg-primary mb-3"></div>
@@ -750,6 +850,17 @@
 
     <script>
       (function() {
+        /* CLS: grain injetado após first paint para evitar shift 1.0 */
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            var grain = document.createElement('div');
+            grain.className = 'grain';
+            grain.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(grain);
+          });
+        });
+      })();
+      (function() {
         var preload = document.getElementById('preload');
         var duration = 2800;
         var fadeOut = 600;
@@ -798,7 +909,9 @@
           panel.classList.add('scale-100');
           document.body.style.overflow = 'hidden';
           var firstFocus = modal.querySelector('a, button');
-          if (firstFocus) firstFocus.focus();
+          if (firstFocus) {
+            requestAnimationFrame(function() { firstFocus.focus(); });
+          }
         }
         function closeModal() {
           modal.classList.add('opacity-0', 'pointer-events-none');
@@ -818,37 +931,47 @@
         });
       })();
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind carregado de forma assíncrona para não bloquear LCP (sai do critical path) -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#FF5C00",
-              secondary: "#B84200",
-              "bg-dark": "#000000",
-              "glass": "rgba(255, 255, 255, 0.03)",
-            },
-            fontFamily: {
-              sans: ["Plus Jakarta Sans", "sans-serif"],
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'glow': 'glow 8s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0px)' },
-                '50%': { transform: 'translateY(-20px)' },
+      (function() {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.tailwindcss.com';
+        s.async = true;
+        s.onload = function() {
+          if (window.tailwind) {
+            window.tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: "#FF5C00",
+                    secondary: "#B84200",
+                    "bg-dark": "#000000",
+                    "glass": "rgba(255, 255, 255, 0.03)",
+                  },
+                  fontFamily: {
+                    sans: ["Plus Jakarta Sans", "sans-serif"],
+                  },
+                  animation: {
+                    'float': 'float 6s ease-in-out infinite',
+                    'glow': 'glow 8s ease-in-out infinite',
+                  },
+                  keyframes: {
+                    float: {
+                      '0%, 100%': { transform: 'translateY(0px)' },
+                      '50%': { transform: 'translateY(-20px)' },
+                    },
+                    glow: {
+                      '0%, 100%': { opacity: 0.2 },
+                      '50%': { opacity: 0.5 },
+                    }
+                  }
+                },
               },
-              glow: {
-                '0%, 100%': { opacity: 0.2 },
-                '50%': { opacity: 0.5 },
-              }
-            }
-          },
-        },
-      };
+            };
+          }
+        };
+        document.body.appendChild(s);
+      })();
     </script>
 </body>
 </html>
