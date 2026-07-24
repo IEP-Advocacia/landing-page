@@ -23,7 +23,7 @@ Este documento descreve as práticas de acessibilidade implementadas na landing 
 
 ### Botões e links
 - **Botões**: `type="button"` e `aria-label` quando o texto sozinho não basta (ex.: “Agendar Consulta”, “Fale Conosco”).
-- **WhatsApp**: trocado de `<button>` para `<a href="https://wa.me/5585988542604">` com `target="_blank"`, `rel="noopener noreferrer"` e `aria-label` descritivo.
+- **WhatsApp**: trocado de `<button>` para `<a href="https://wa.me/5585958548401">` com `target="_blank"`, `rel="noopener noreferrer"` e `aria-label` descritivo.
 - **Links “em breve”**: Política de Privacidade e Termos de Uso com `aria-label` indicando “(página em breve)”.
 
 ### Imagens
